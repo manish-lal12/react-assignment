@@ -79,10 +79,7 @@ const plants = [
 const Header = () => {
   const cart = useSelector((state) => state.cart);
   return (
-    <header
-      className="header"
-      style={{ backgroundImage: "url(/bg_image.jpg)" }}
-    >
+    <header className="header">
       <h1>GreenThumb</h1>
       <nav>
         <Link to="/">Home</Link> | <Link to="/products">Products</Link> |
@@ -94,16 +91,9 @@ const Header = () => {
 
 // Landing Page
 const LandingPage = () => (
-  <div
-    className="landing"
-    style={{
-      backgroundImage: "url(/bg_image.jpg)",
-      padding: "50px",
-      color: "#fff",
-    }}
-  >
+  <div className="landing">
     <h2>Welcome to GreenThumb!</h2>
-    <p>Your one-stop shop for beautiful houseplants.</p>
+    <div>Your one-stop shop for beautiful houseplants.</div>
     <Link to="/products">
       <button>Get Started</button>
     </Link>
@@ -121,7 +111,7 @@ const ProductListingPage = () => {
     <div>
       {categories.map((cat) => (
         <div key={cat}>
-          <h3>{cat}</h3>
+          <div style={{ fontSize: "2rem" }}>{cat}</div>
           <div className="products">
             {plants
               .filter((p) => p.category === cat)
@@ -133,7 +123,7 @@ const ProductListingPage = () => {
                     style={{ height: "400px", width: "400px" }}
                   />
                   <h4>{plant.name}</h4>
-                  <p>${plant.price}</p>
+                  <div>${plant.price}</div>
                   <button
                     onClick={() => dispatch(addToCart(plant))}
                     disabled={cart.some((item) => item.id === plant.id)}
